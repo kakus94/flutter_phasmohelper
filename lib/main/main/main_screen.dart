@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phasmohelper/main/main/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/main/main_state.dart';
+import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 
 class MainScreen extends StatefulWidget {
@@ -53,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
         height: 80,
         child: Container(
           padding: const EdgeInsets.only(top: 10),
-          color: Colors.red,
+          // color: Colors.red,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -167,9 +168,17 @@ class _CardTileState extends State<CardTile> {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-          title: Text(widget.model.name,
-              style:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          title: Row(
+            children: [
+              Text(
+                widget.model.name,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Spacer(),
+              ...widget.model.evidence.map((e) => Image.asset(e.imagePath()))
+            ],
+          ),
           subtitle: widget.extend
               ? Column(
                   children: [
