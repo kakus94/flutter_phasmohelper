@@ -75,9 +75,9 @@ class GameController {
         return true;
       }
 
-      // if (e.behaviorHunt == behaviorHunt) {
-      //   return true;
-      // }
+      if (e.behaviorHunt == behaviorHunt) {
+        return true;
+      }
 
       return false;
     }).toList();

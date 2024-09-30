@@ -83,19 +83,23 @@ extension HuntSanityExtension on HuntSanity {
     }
   }
 
-  bool isHuntPosible(HuntSanity huntSanity) {
+  int weight() {
     switch (this) {
-      case HuntSanity.earlyP50:
-        return value() < huntSanity.value();
-      case HuntSanity.normalP50:
-        return value() > huntSanity.value();
       case HuntSanity.veryEarlyP75:
-        return value() < huntSanity.value();
+        return 1;
+      case HuntSanity.earlyP50:
+        return 2;
+      case HuntSanity.normalP50:
+        return 3;
       case HuntSanity.lateM40:
-        return value() > huntSanity.value();
+        return 4;
       case HuntSanity.none:
-        return false;
+        return 5;
     }
+  }
+
+  bool isHuntPosible(HuntSanity huntSanity) {
+    return weight() <= huntSanity.weight();
   }
 }
 

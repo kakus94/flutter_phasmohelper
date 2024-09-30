@@ -8,7 +8,7 @@ class GhostModel {
     required this.evidence,
     required this.evidenceRequired,
     required this.huntSpeedNoSee,
-    required this.huntSpeedSee,
+    required this.behaviorHunt,
     required this.huntSanity,
     required this.huntSanityPrecent,
     required this.canRecognizedHunting,
@@ -22,7 +22,7 @@ class GhostModel {
   List<Evidence> evidence;
   Evidence? evidenceRequired;
   Speed huntSpeedNoSee;
-  Speed? huntSpeedSee;
+  BehaviorHunt? behaviorHunt;
   HuntSanity huntSanity;
   int huntSanityPrecent;
   CanRecognizedHunting canRecognizedHunting;
