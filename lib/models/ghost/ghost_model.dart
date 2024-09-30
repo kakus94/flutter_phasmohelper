@@ -14,6 +14,7 @@ class GhostModel {
     required this.canRecognizedHunting,
     required this.difficultyWithoutEvidence,
     required this.infos,
+    required this.nature,
   });
 
   String name;
@@ -26,6 +27,7 @@ class GhostModel {
   CanRecognizedHunting canRecognizedHunting;
   DifficultyWithoutEvidence difficultyWithoutEvidence;
   List<InfoModel> infos;
+  Nature? nature;
 }
 
 class InfoModel {

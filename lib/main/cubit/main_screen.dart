@@ -153,6 +153,8 @@ class _CardTileState extends State<CardTile> {
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              if (widget.model.nature != null)
+                Icon(widget.model.nature!.icon()),
               Spacer(),
               ...widget.model.evidence.map((e) => Image.asset(e.imagePath()))
             ],

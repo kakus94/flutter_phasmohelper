@@ -34,9 +34,11 @@ class GameController {
   }
 
   List<GhostModel> getGhostList() {
-    final x = _getGhostEvidence(ghostList);
-    final y = _getGhostHuntSanity(x);
-    return y;
+    var x = _getGhostEvidence(ghostList);
+    x = _getGhostHuntSanity(x);
+    x = _getGhostBehaviorHunt(x);
+    x = _getGhostNormalSpeed(x);
+    return x;
   }
 
   List<GhostModel> _getGhostEvidence(List<GhostModel> ghosts) {
@@ -55,11 +57,39 @@ class GameController {
 
   List<GhostModel> _getGhostHuntSanity(List<GhostModel> ghosts) {
     return ghosts.where((e) {
-      if (huntSanity == null) {
+      if (huntSanity == null || huntSanity == HuntSanity.none) {
         return true;
       }
 
-      if (e.huntSanity == huntSanity) {
+      if (e.huntSanity.isHuntPosible(huntSanity!)) {
+        return true;
+      }
+
+      return false;
+    }).toList();
+  }
+
+  List<GhostModel> _getGhostBehaviorHunt(List<GhostModel> ghosts) {
+    return ghosts.where((e) {
+      if (behaviorHunt == null || behaviorHunt == BehaviorHunt.none) {
+        return true;
+      }
+
+      // if (e.behaviorHunt == behaviorHunt) {
+      //   return true;
+      // }
+
+      return false;
+    }).toList();
+  }
+
+  List<GhostModel> _getGhostNormalSpeed(List<GhostModel> ghosts) {
+    return ghosts.where((e) {
+      if (norlmalSpeed == null || norlmalSpeed == Speed.none) {
+        return true;
+      }
+
+      if (e.huntSpeedNoSee == norlmalSpeed) {
         return true;
       }
 

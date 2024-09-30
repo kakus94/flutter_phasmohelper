@@ -42,7 +42,6 @@ class _FastHuntNormal extends StatelessWidget {
           const BoxConstraints(maxHeight: 300, maxWidth: 300, minWidth: 100),
       // color: colorDialog,
       onSelected: (value) {
-        print(value);
         getIt<MainCubit>().setNormalSpeed(value);
       },
       itemBuilder: (context) {
@@ -72,7 +71,7 @@ class _FastHuntNormal extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.speed),
-          Text(getIt<GameController>().norlmalSpeed?.toString() ?? "Brak"),
+          Text(getIt<GameController>().norlmalSpeed?.name() ?? "brak"),
         ],
       ),
     );
@@ -121,7 +120,7 @@ class _BehaviorHunt extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.thermostat),
-          Text(getIt<GameController>().behaviorHunt?.toString() ?? "Brak"),
+          Text(getIt<GameController>().behaviorHunt?.name() ?? "Brak"),
         ],
       ),
     );
@@ -174,7 +173,7 @@ class _HuntTime extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.timer),
-          Text(getIt<GameController>().huntSanity?.toString() ?? "Brak"),
+          Text(getIt<GameController>().huntSanity?.name() ?? "Brak"),
         ],
       ),
     );
