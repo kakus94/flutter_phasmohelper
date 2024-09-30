@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_phasmohelper/controller/game_controller.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
