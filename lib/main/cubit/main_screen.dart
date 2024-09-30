@@ -6,6 +6,7 @@ import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
 import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
+import 'package:flutter_phasmohelper/main/subview/top_drop_menu.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 
@@ -41,14 +42,9 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: false,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _FastHuntNormal(),
-              _FastHuntNormal(),
-              _FastHuntNormal(),
-              _FastHuntNormal(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: TopDropMenu(),
           ),
         ),
       ),

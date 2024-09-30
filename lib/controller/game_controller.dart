@@ -6,7 +6,7 @@ class GameController {
   List<GhostModel> ghostList = Database.ghostList;
   List<Evidence> findedEvidences = [];
   Speed? norlmalSpeed;
-  Speed? superSpeed;
+  BehaviorHunt? behaviorHunt;
   HuntSanity? huntSanity;
 
   void addEvidence(Evidence evidence) {
@@ -25,8 +25,8 @@ class GameController {
     norlmalSpeed = speed;
   }
 
-  void setSuperSpeed(Speed speed) {
-    superSpeed = speed;
+  void setBehaviorHunt(BehaviorHunt? speed) {
+    behaviorHunt = speed;
   }
 
   void setHuntSanity(HuntSanity huntSanity) {
@@ -44,7 +44,6 @@ class GameController {
       if (findedEvidences.isEmpty) {
         return true;
       }
-
 
       if (findedEvidences.every((evidence) => e.evidence.contains(evidence))) {
         return true;

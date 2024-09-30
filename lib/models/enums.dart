@@ -45,3 +45,5 @@ enum DifficultyLevel {
 enum CanRecognizedHunting { yes, no, maybe }
 
 enum DifficultyWithoutEvidence { easy, medium, hard, posibleMultiolayer }
+
+enum BehaviorHunt { slowsDown, normal, speedsUp }
