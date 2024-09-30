@@ -14,11 +14,27 @@ final gameController = getIt<GameController>();
     final stableState = state;
     try {
       emit(state.copyWith(isLoading: true));
-      gameController.addEvidence(Evidence.freezing);
       emit(state.copyWith(isLoading: false, ghostList: gameController.getGhostList()));
     } catch (error) {
       emit(state.copyWith(error: error.toString()));
       emit(stableState.copyWith(isLoading: false));
     }
   }
+
+  void changeEvidence(Evidence emf5) {
+    if (gameController.findedEvidences.contains(emf5)) {
+      gameController.removeEvidence(emf5);
+    } else {
+      gameController.addEvidence(emf5);
+    }
+
+    loadInitialData();
+  }
+
+  bool isEvidence(Evidence emf5) {
+    return gameController.findedEvidences.contains(emf5);
+  }
+
+
+
 }

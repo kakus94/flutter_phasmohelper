@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
 import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
@@ -16,7 +17,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final screenCubit = MainCubit();
+  final screenCubit = getIt<MainCubit>();
 
   final delegate = const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2,

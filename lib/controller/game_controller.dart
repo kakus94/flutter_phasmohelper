@@ -1,18 +1,13 @@
-
-
 import 'package:flutter_phasmohelper/database/database.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 
-
 class GameController {
-
   List<GhostModel> ghostList = Database.ghostList;
   List<Evidence> findedEvidences = [];
   Speed? norlmalSpeed;
   Speed? superSpeed;
   HuntSanity? huntSanity;
-
 
   void addEvidence(Evidence evidence) {
     findedEvidences.add(evidence);
@@ -26,53 +21,50 @@ class GameController {
     findedEvidences.clear();
   }
 
-  void setNormalSpeed (Speed speed) {
+  void setNormalSpeed(Speed speed) {
     norlmalSpeed = speed;
   }
 
-  void setSuperSpeed (Speed speed) {
+  void setSuperSpeed(Speed speed) {
     superSpeed = speed;
   }
 
-  void setHuntSanity (HuntSanity huntSanity) {
+  void setHuntSanity(HuntSanity huntSanity) {
     this.huntSanity = huntSanity;
   }
 
   List<GhostModel> getGhostList() {
-    final x = _getGhostEvidence( ghostList);
+    final x = _getGhostEvidence(ghostList);
     final y = _getGhostHuntSanity(x);
     return y;
   }
 
-
-  List<GhostModel> _getGhostEvidence(List<GhostModel> ghosts) {  
-     return ghosts.where( (e) {
-      if (findedEvidences.isEmpty ) {
+  List<GhostModel> _getGhostEvidence(List<GhostModel> ghosts) {
+    return ghosts.where((e) {
+      if (findedEvidences.isEmpty) {
         return true;
       }
 
-  if (findedEvidences.any((evidence) => e.evidence.contains(evidence))) {
-    return true;
-  }
+
+      if (findedEvidences.every((evidence) => e.evidence.contains(evidence))) {
+        return true;
+      }
 
       return false;
-     }).toList();
+    }).toList();
   }
 
+  List<GhostModel> _getGhostHuntSanity(List<GhostModel> ghosts) {
+    return ghosts.where((e) {
+      if (huntSanity == null) {
+        return true;
+      }
 
-  List<GhostModel> _getGhostHuntSanity(List<GhostModel> ghosts) { 
- return ghosts.where( (e) { 
-  if  (huntSanity == null) {
-    return true;
+      if (e.huntSanity == huntSanity) {
+        return true;
+      }
+
+      return false;
+    }).toList();
   }
-
-  if (e.huntSanity == huntSanity) {
-    return true;  
-  }
-
-  return false;
- }).toList();
-
-  }
-
 }
