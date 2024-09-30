@@ -90,9 +90,7 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class _FastHuntNormal extends StatelessWidget {
-  const _FastHuntNormal({
-    super.key,
-  });
+  const _FastHuntNormal();
 
   @override
   Widget build(BuildContext context) {
@@ -100,8 +98,6 @@ class _FastHuntNormal extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      // icon: const Icon(Icons.format_align_justify),
-      child: const Text('Hunt fast'),
       constraints: const BoxConstraints(
         maxHeight: 300,
         maxWidth: 300,
@@ -129,6 +125,8 @@ class _FastHuntNormal extends StatelessWidget {
           ),
         ];
       },
+      // icon: const Icon(Icons.format_align_justify),
+      child: const Text('Hunt fast'),
     );
   }
 }

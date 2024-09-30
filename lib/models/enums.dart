@@ -29,9 +29,9 @@ extension EvidenceExtension on Evidence {
   }
 }
 
-enum Speed { slow, medium, fast, superFast }
+enum Speed { slow, medium, fast, superFast, none }
 
-enum HuntSanity { lateM40, normalP50, earlyP50, veryEarlyP75 }
+enum HuntSanity { lateM40, normalP50, earlyP50, veryEarlyP75, none }
 
 enum DifficultyLevel {
   amator,
@@ -46,4 +46,4 @@ enum CanRecognizedHunting { yes, no, maybe }
 
 enum DifficultyWithoutEvidence { easy, medium, hard, posibleMultiolayer }
 
-enum BehaviorHunt { slowsDown, normal, speedsUp }
+enum BehaviorHunt { slowsDown, normal, speedsUp, none }

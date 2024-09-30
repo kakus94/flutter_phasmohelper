@@ -21,7 +21,7 @@ class GameController {
     findedEvidences.clear();
   }
 
-  void setNormalSpeed(Speed speed) {
+  void setNormalSpeed(Speed? speed) {
     norlmalSpeed = speed;
   }
 

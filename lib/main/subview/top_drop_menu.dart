@@ -1,61 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phasmohelper/config/di.dart';
+import 'package:flutter_phasmohelper/controller/game_controller.dart';
+import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
+import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
+import 'package:flutter_phasmohelper/models/enums.dart';
 
 class TopDropMenu extends StatelessWidget {
-  const TopDropMenu({super.key});
+  TopDropMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [_FastHuntNormal(), _BehaviorHunt(), _HuntTime()],
+    return BlocBuilder<MainCubit, MainState>(
+      bloc: getIt<MainCubit>(),
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _FastHuntNormal(),
+            _BehaviorHunt(),
+            _HuntTime(),
+          ],
+        );
+      },
     );
   }
 }
 
 class _FastHuntNormal extends StatelessWidget {
-  const _FastHuntNormal();
+  _FastHuntNormal();
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<String>(
+    return PopupMenuButton<Speed?>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+      initialValue: null,
+
       constraints:
           const BoxConstraints(maxHeight: 300, maxWidth: 300, minWidth: 100),
       // color: colorDialog,
-      onSelected: (value) {},
+      onSelected: (value) {
+        print(value);
+        getIt<MainCubit>().setNormalSpeed(value);
+      },
       itemBuilder: (context) {
         return [
           const PopupMenuItem(
-            value: "wyloguj",
+            value: Speed.none,
+            child: Text("brak"),
+          ),
+          const PopupMenuItem(
+            value: Speed.slow,
             child: Text("slow"),
           ),
           const PopupMenuItem(
-            value: "O aplikacji",
+            value: Speed.medium,
             child: Text("normal"),
           ),
           const PopupMenuItem(
-            value: "Pomoc",
+            value: Speed.fast,
             child: Text("fast"),
           ),
           const PopupMenuItem(
-            value: "Pomoc",
+            value: Speed.superFast,
             child: Text("very fast"),
           ),
         ];
       },
-      child: const Text('Szybkość'),
+      child: Row(
+        children: [
+          const Icon(Icons.speed),
+          Text(getIt<GameController>().norlmalSpeed?.toString() ?? "Brak"),
+        ],
+      ),
     );
   }
 }
 
 class _BehaviorHunt extends StatelessWidget {
-  const _BehaviorHunt();
+  _BehaviorHunt();
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<String>(
+    return PopupMenuButton<BehaviorHunt>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -65,35 +94,46 @@ class _BehaviorHunt extends StatelessWidget {
         minWidth: 75,
       ),
       // color: colorDialog,
-      onSelected: (value) {},
+      onSelected: (value) {
+        getIt<MainCubit>().setBehaviorHunt(value);
+      },
       itemBuilder: (context) {
         return [
           const PopupMenuItem(
-            value: "wyloguj",
+            value: BehaviorHunt.none,
+            child: Text("Brak"),
+          ),
+          const PopupMenuItem(
+            value: BehaviorHunt.slowsDown,
             child: Text("Zwalnia"),
           ),
           const PopupMenuItem(
-            value: "O aplikacji",
+            value: BehaviorHunt.normal,
             child: Text("bez zmian"),
           ),
           const PopupMenuItem(
-            value: "Pomoc",
+            value: BehaviorHunt.speedsUp,
             child: Text("Przyspiesza"),
           ),
         ];
       },
       // icon: const Icon(Icons.format_align_justify),
-      child: const Text('Zachowanie'),
+      child: Row(
+        children: [
+          const Icon(Icons.thermostat),
+          Text(getIt<GameController>().behaviorHunt?.toString() ?? "Brak"),
+        ],
+      ),
     );
   }
 }
 
 class _HuntTime extends StatelessWidget {
-  const _HuntTime();
+  _HuntTime();
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<String>(
+    return PopupMenuButton<HuntSanity>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -103,25 +143,40 @@ class _HuntTime extends StatelessWidget {
         minWidth: 75,
       ),
       // color: colorDialog,
-      onSelected: (value) {},
+      onSelected: (value) {
+        getIt<MainCubit>().setHuntSanity(value);
+      },
       itemBuilder: (context) {
         return [
           const PopupMenuItem(
-            value: "wyloguj",
-            child: Text("Wczesnie"),
+            value: HuntSanity.none,
+            child: Text("Brak"),
           ),
           const PopupMenuItem(
-            value: "O aplikacji",
-            child: Text("Normalnie"),
+            value: HuntSanity.veryEarlyP75,
+            child: Text("Bardzej wczesnie >75"),
           ),
           const PopupMenuItem(
-            value: "Pomoc",
-            child: Text("Poźno"),
+            value: HuntSanity.earlyP50,
+            child: Text("Wczesnie <75"),
+          ),
+          const PopupMenuItem(
+            value: HuntSanity.normalP50,
+            child: Text("Normalnie <50"),
+          ),
+          const PopupMenuItem(
+            value: HuntSanity.lateM40,
+            child: Text("Późno <40"),
           ),
         ];
       },
       // icon: const Icon(Icons.format_align_justify),
-      child: const Text('Pierwszy Hunt'),
+      child: Row(
+        children: [
+          const Icon(Icons.timer),
+          Text(getIt<GameController>().huntSanity?.toString() ?? "Brak"),
+        ],
+      ),
     );
   }
 }
