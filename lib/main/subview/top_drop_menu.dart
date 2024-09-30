@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
@@ -14,16 +16,39 @@ class TopDropMenu extends StatelessWidget {
     return BlocBuilder<MainCubit, MainState>(
       bloc: getIt<MainCubit>(),
       builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _FastHuntNormal(),
-            _BehaviorHunt(),
-            _HuntTime(),
-          ],
+        return SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _Decoration(widget: _FastHuntNormal()),
+              const SizedBox(width: 10),
+              _Decoration(widget: _BehaviorHunt()),
+              const SizedBox(width: 10),
+              _Decoration(widget: _HuntTime()),
+              const SizedBox(width: 10),
+              _Decoration(widget: const Text("Start"))
+            ],
+          ),
         );
       },
     );
+  }
+}
+
+class _Decoration extends StatelessWidget {
+  _Decoration({required this.widget});
+
+  Widget widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.only(bottom: 5, top: 5, left: 15, right: 15),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.grey.shade300),
+        child: widget);
   }
 }
 

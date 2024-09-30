@@ -155,6 +155,10 @@ class _CardTileState extends State<CardTile> {
               ),
               if (widget.model.nature != null)
                 Icon(widget.model.nature!.icon()),
+              SizedBox(width: 10),
+              Text(widget.model.speed,
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w600)),
               Spacer(),
               ...widget.model.evidence.map((e) => Image.asset(e.imagePath()))
             ],

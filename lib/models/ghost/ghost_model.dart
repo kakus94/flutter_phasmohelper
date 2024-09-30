@@ -15,6 +15,7 @@ class GhostModel {
     required this.difficultyWithoutEvidence,
     required this.infos,
     required this.nature,
+    required this.speed,
   });
 
   String name;
@@ -28,6 +29,7 @@ class GhostModel {
   DifficultyWithoutEvidence difficultyWithoutEvidence;
   List<InfoModel> infos;
   Nature? nature;
+  String speed;
 }
 
 class InfoModel {

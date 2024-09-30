@@ -14,6 +14,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': "info", 'en': "info"},
@@ -38,6 +39,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -69,6 +71,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -117,6 +120,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: Nature.force,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -156,6 +160,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.posibleMultiolayer,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -216,6 +221,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: Nature.power,
+      speed: "1.7-2.5 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -253,6 +259,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: Nature.light,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -301,6 +308,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: Nature.fast,
+      speed: "1.0-3.0 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -332,6 +340,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -375,6 +384,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -416,6 +426,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -459,6 +470,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: Nature.loud,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -502,6 +514,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: Nature.power,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -543,6 +556,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: Nature.temp,
+      speed: "1.44-2.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -582,6 +596,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -623,6 +638,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -652,6 +668,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.no,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: Nature.fire,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -689,6 +706,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.hard,
       nature: null,
+      speed: "1.53-1.87 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -726,6 +744,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: Nature.power,
+      speed: "1.7-2.5 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -763,6 +782,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -815,6 +835,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: null,
+      speed: "1.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -856,6 +877,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: null,
+      speed: "1.5-3.7 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -899,6 +921,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.easy,
       nature: null,
+      speed: "0.4-3.0 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
@@ -940,6 +963,7 @@ class Database {
       canRecognizedHunting: CanRecognizedHunting.yes,
       difficultyWithoutEvidence: DifficultyWithoutEvidence.medium,
       nature: null,
+      speed: "1.0-2.75 m/s",
       infos: [
         InfoModel(
           title: {'pl': 'info', 'en': 'info'},
