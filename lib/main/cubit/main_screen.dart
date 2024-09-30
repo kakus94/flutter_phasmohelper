@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phasmohelper/main/main/main_cubit.dart';
-import 'package:flutter_phasmohelper/main/main/main_state.dart';
+import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
+import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
+import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 
@@ -42,33 +43,15 @@ class _MainScreenState extends State<MainScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _fastHuntNormal(),
-              _fastHuntNormal(),
-              _fastHuntNormal(),
-              _fastHuntNormal(),
+              _FastHuntNormal(),
+              _FastHuntNormal(),
+              _FastHuntNormal(),
+              _FastHuntNormal(),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: Container(
-          padding: const EdgeInsets.only(top: 10),
-          // color: Colors.red,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              itemNav("EMF5", 'assets/emf.png'),
-              itemNav("Spiritbox", 'assets/spiritbox.png'),
-              itemNav("D.O.T.S", 'assets/dots.png'),
-              itemNav("Freezing", 'assets/mrozne.png'),
-              itemNav("ORB", 'assets/orb.png'),
-              itemNav("Writing", 'assets/pismo.png'),
-              itemNav("ultrafiolent", 'assets/ultrafiolet.png'),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: BottomNavbar(),
       body: BlocConsumer<MainCubit, MainState>(
         bloc: screenCubit,
         listener: (BuildContext context, MainState state) {
@@ -109,8 +92,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
-class _fastHuntNormal extends StatelessWidget {
-  const _fastHuntNormal({
+class _FastHuntNormal extends StatelessWidget {
+  const _FastHuntNormal({
     super.key,
   });
 
