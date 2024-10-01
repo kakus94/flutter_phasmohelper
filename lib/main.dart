@@ -1,10 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/arb_localization.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
+
+  RequestConfiguration requestConfiguration = RequestConfiguration(
+    testDeviceIds: ['2da1fd2d-40cf-4ec4-ae04-45155e3f2253'],
+  );
+
+  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+
   setupDi();
   runApp(const MyApp());
 }
