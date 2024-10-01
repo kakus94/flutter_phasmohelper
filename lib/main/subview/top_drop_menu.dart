@@ -7,6 +7,7 @@ import 'package:flutter_phasmohelper/controller/game_controller.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
+import 'package:flutter_phasmohelper/stoper/cubit/stoper_cubit.dart';
 
 class TopDropMenu extends StatelessWidget {
   TopDropMenu({super.key});
@@ -27,7 +28,11 @@ class TopDropMenu extends StatelessWidget {
               const SizedBox(width: 10),
               _Decoration(widget: _HuntTime()),
               const SizedBox(width: 10),
-              _Decoration(widget: const Text("Start"))
+              _Decoration(
+                  widget: GestureDetector(
+                child: const Text("Start"),
+                onTap: () => getIt<StoperCubit>().start(),
+              )),
             ],
           ),
         );

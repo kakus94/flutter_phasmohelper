@@ -9,6 +9,7 @@ import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
 import 'package:flutter_phasmohelper/main/subview/top_drop_menu.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
+import 'package:flutter_phasmohelper/stoper/cubit/stoper_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -41,10 +42,15 @@ class _MainScreenState extends State<MainScreen> {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
         centerTitle: false,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(15),
+          preferredSize: const Size.fromHeight(50),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: TopDropMenu(),
+            child: Column(
+              children: [
+                TopDropMenu(),
+                StoperScreen(),
+              ],
+            ),
           ),
         ),
       ),
