@@ -34,38 +34,46 @@ extension EvidenceExtension on Evidence {
 enum Speed { slow, medium, fast, superFast, none }
 
 extension SpeedExtension on Speed {
-  String name() {
+  get _name {
     switch (this) {
       case Speed.slow:
-        return 'SLOW';
+        return {'en': 'Slow', 'pl': 'Wolny'};
       case Speed.medium:
-        return 'NORMAL';
+        return {'en': 'Normal', 'pl': 'Normalny'};
       case Speed.fast:
-        return 'FAST';
+        return {'en': 'Fast', 'pl': 'Szybki'};
       case Speed.superFast:
-        return 'SUPER FAST';
+        return {'en': 'Super Fast', 'pl': 'Super szybki'};
       case Speed.none:
-        return 'NONE';
+        return {'en': 'None', 'pl': 'Brak'};
     }
+  }
+
+  String name(String key) {
+    return _name[key];
   }
 }
 
 enum HuntSanity { lateM40, normalP50, earlyP50, veryEarlyP75, none }
 
 extension HuntSanityExtension on HuntSanity {
-  String name() {
+  get _name {
     switch (this) {
       case HuntSanity.earlyP50:
-        return 'Wczesnie';
+        return {'en': 'Early', 'pl': 'Wczesny'};
       case HuntSanity.normalP50:
-        return 'Normalne';
+        return {'en': 'Normal', 'pl': 'Normalny'};
       case HuntSanity.veryEarlyP75:
-        return 'Bardziej wczesnie';
+        return {'en': 'Very Early', 'pl': 'Bardziej wczesny'};
       case HuntSanity.lateM40:
-        return 'Po wczesnej';
+        return {'en': 'Late', 'pl': 'Późny'};
       case HuntSanity.none:
-        return 'Brak';
+        return {'en': 'None', 'pl': 'Brak'};
     }
+  }
+
+  String name(String key) {
+    return _name[key];
   }
 
   int value() {
@@ -119,17 +127,21 @@ enum DifficultyWithoutEvidence { easy, medium, hard, posibleMultiolayer }
 enum BehaviorHunt { slowsDown, normal, speedsUp, none }
 
 extension BehaviorHuntExtension on BehaviorHunt {
-  String name() {
+  get _name {
     switch (this) {
       case BehaviorHunt.slowsDown:
-        return 'Zwalnia';
+        return {'en': 'Slows Down', 'pl': 'Zwalnia'};
       case BehaviorHunt.normal:
-        return 'bez zmian';
+        return {'en': 'Normal', 'pl': 'Normalny'};
       case BehaviorHunt.speedsUp:
-        return 'Zwieksza';
+        return {'en': 'Speeds Up', 'pl': 'Przyspiesza'};
       case BehaviorHunt.none:
-        return 'Brak';
+        return {'en': 'None', 'pl': 'Brak'};
     }
+  }
+
+  String name(String key) {
+    return _name[key];
   }
 }
 

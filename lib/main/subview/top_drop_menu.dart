@@ -95,7 +95,7 @@ class _FastHuntNormal extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.speed),
-          Text(getIt<GameController>().norlmalSpeed?.name() ?? "brak"),
+          Text(getIt<GameController>().norlmalSpeed?.name('pl') ?? "brak"),
         ],
       ),
     );
@@ -144,7 +144,7 @@ class _BehaviorHunt extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.thermostat),
-          Text(getIt<GameController>().behaviorHunt?.name() ?? "Brak"),
+          Text(getIt<GameController>().behaviorHunt?.name('pl') ?? "Brak"),
         ],
       ),
     );
@@ -197,7 +197,7 @@ class _HuntTime extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.timer),
-          Text(getIt<GameController>().huntSanity?.name() ?? "Brak"),
+          Text(getIt<GameController>().huntSanity?.name('pl') ?? "Brak"),
         ],
       ),
     );

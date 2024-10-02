@@ -75,10 +75,7 @@ class _MainScreenState extends State<MainScreen> {
     return Column(
       children: [
         Image.asset(icon),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 12),
-        ),
+        Text(title, style: const TextStyle(fontSize: 12)),
       ],
     );
   }
