@@ -39,27 +39,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          ElevatedButton(
-              onPressed: () => getIt<MainCubit>(), child: const Text("Reset"))
-        ],
-        title: const Text('PHASMOHELPER',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-        centerTitle: false,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(55),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Column(
-              children: [
-                StoperScreen(),
-                TopDropMenu(),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: PreferredSize(
+          preferredSize:
+              const Size.fromHeight(125.0), // default height for AppBar
+          child: MyAppBar()),
       bottomNavigationBar: BottomNavbar(),
       body: BlocConsumer<MainCubit, MainState>(
         bloc: screenCubit,
@@ -97,6 +80,57 @@ class _MainScreenState extends State<MainScreen> {
           style: const TextStyle(fontSize: 12),
         ),
       ],
+    );
+  }
+}
+
+class MyAppBar extends StatelessWidget {
+  const MyAppBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<StoperCubit, StoperState>(
+      bloc: getIt<StoperCubit>(),
+      builder: (context, state) {
+        return AppBar(
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                getIt<MainCubit>().reset();
+                getIt<StoperCubit>().reset();
+              },
+              child: const Text("Reset"),
+            ),
+            SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () => state.status == StoperStatus.start
+                  ? getIt<StoperCubit>().stop()
+                  : getIt<StoperCubit>().start(),
+              child: state.status == StoperStatus.start
+                  ? const Text("Stop")
+                  : const Text("Start"),
+            ),
+            SizedBox(width: 10)
+          ],
+          title: const Text('PHASMOHELPER',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          centerTitle: false,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(70),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Column(
+                children: [
+                  StoperScreen(),
+                  TopDropMenu(),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

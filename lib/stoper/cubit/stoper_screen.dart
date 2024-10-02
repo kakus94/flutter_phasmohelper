@@ -81,19 +81,19 @@ class _StoperScreenState extends State<StoperScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(width: 10),
-                Flexible(
-                  flex: 3,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        state.status != StoperStatus.start
-                            ? getIt<StoperCubit>().start()
-                            : getIt<StoperCubit>().stop();
-                      },
-                      child: state.status != StoperStatus.pause
-                          ? const Text("Pause")
-                          : const Text("Start")),
-                ),
+                // const SizedBox(width: 10),
+                // Flexible(
+                //   flex: 3,
+                //   child: ElevatedButton(
+                //       onPressed: () {
+                //         state.status != StoperStatus.start
+                //             ? getIt<StoperCubit>().start()
+                //             : getIt<StoperCubit>().stop();
+                //       },
+                //       child: state.status != StoperStatus.pause
+                //           ? const Text("Pause")
+                //           : const Text("Start")),
+                // ),
               ],
             ),
           ),

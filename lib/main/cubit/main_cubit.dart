@@ -50,4 +50,9 @@ class MainCubit extends Cubit<MainState> {
     gameController.setHuntSanity(value);
     loadInitialData();
   }
+
+  void reset() {
+    gameController.clearFindedEvidences();
+    loadInitialData();
+  }
 }

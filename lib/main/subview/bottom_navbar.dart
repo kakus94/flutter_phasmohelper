@@ -28,7 +28,7 @@ class BottomNavbar extends StatelessWidget {
       bloc: getIt<MainCubit>(),
       builder: (BuildContext context, MainState state) {
         return SizedBox(
-            height: 140,
+            height: 100,
             child: Container(
               padding: const EdgeInsets.only(top: 10),
               // color: Colors.red,

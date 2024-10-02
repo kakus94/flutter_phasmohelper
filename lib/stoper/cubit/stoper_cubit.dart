@@ -20,4 +20,13 @@ class StoperCubit extends Cubit<StoperState> {
     _timer?.cancel();
     emit(state.copyWith(status: StoperStatus.pause));
   }
+
+  void reset() {
+    stop();
+    emit(const StoperState(
+      counter: 0,
+      status: StoperStatus.pause,
+      error: null,
+    ));
+  }
 }

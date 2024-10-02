@@ -19,6 +19,9 @@ class GameController {
 
   void clearFindedEvidences() {
     findedEvidences.clear();
+    norlmalSpeed = null;
+    behaviorHunt = null;
+    huntSanity = null;
   }
 
   void setNormalSpeed(Speed? speed) {
