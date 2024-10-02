@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phasmohelper/ads/ads_widget.dart';
+// import 'package:flutter_phasmohelper/ads/ads_widget.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
@@ -34,7 +34,7 @@ class BottomNavbar extends StatelessWidget {
               // color: Colors.red,
               child: Column(
                 children: [
-                  MyBannerAdWidget(),
+                  // MyBannerAdWidget(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/arb_localization.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
   setupDi();
