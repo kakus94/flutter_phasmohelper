@@ -14,7 +14,7 @@ class BottomNavbar extends StatelessWidget {
     if (getIt<MainCubit>().isEvidence(evidence)) {
       return Colors.green.shade200;
     } else {
-      return Colors.transparent;
+      return Colors.grey.shade200.withAlpha(80);
     }
   }
 
@@ -30,6 +30,15 @@ class BottomNavbar extends StatelessWidget {
         return SizedBox(
             height: 80,
             child: Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  Color.fromARGB(96, 155, 39, 176),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              )),
               // padding: const EdgeInsets.only(top: 10),
               // color: Colors.red,
               child: Column(
@@ -93,7 +102,7 @@ class BottomNavbar extends StatelessWidget {
       {required Function onTap}) {
     return SizedBox(
       width: 50,
-      height: 75,
+      height: 50,
       child: GestureDetector(
         onTap: () => onTap(),
         child: Container(
@@ -107,8 +116,10 @@ class BottomNavbar extends StatelessWidget {
               Image.asset(icon),
               Text(
                 title,
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),

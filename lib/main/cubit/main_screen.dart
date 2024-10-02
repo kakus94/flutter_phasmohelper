@@ -39,23 +39,38 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(125.0), // default height for AppBar
-          child: MyAppBar()),
+        preferredSize:
+            const Size.fromHeight(125.0), // default height for AppBar
+        child: MyAppBar(),
+      ),
       bottomNavigationBar: BottomNavbar(),
-      body: BlocConsumer<MainCubit, MainState>(
-        bloc: screenCubit,
-        listener: (BuildContext context, MainState state) {
-          if (state.error != null) {}
-        },
-        builder: (BuildContext context, MainState state) {
-          if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            alignment: Alignment.center,
+            fit: BoxFit.fitHeight,
+            image: AssetImage("assets/background.png"),
+          ),
+        ),
+        child: BlocConsumer<MainCubit, MainState>(
+          bloc: screenCubit,
+          listener: (BuildContext context, MainState state) {
+            if (state.error != null) {}
+          },
+          builder: (BuildContext context, MainState state) {
+            if (state.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          return buildBody(state);
-        },
+            return Padding(
+              padding: const EdgeInsets.only(top: 180, bottom: 90),
+              child: buildBody(state),
+            );
+          },
+        ),
       ),
     );
   }
@@ -92,6 +107,16 @@ class MyAppBar extends StatelessWidget {
       bloc: getIt<StoperCubit>(),
       builder: (context, state) {
         return AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Colors.transparent,
+                Color.fromARGB(118, 155, 39, 176),
+              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+            ),
+          ),
           actions: [
             ElevatedButton(
               onPressed: () {
@@ -111,8 +136,14 @@ class MyAppBar extends StatelessWidget {
             ),
             SizedBox(width: 10)
           ],
-          title: const Text('PHASMOHELPER',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          title: const Text(
+            'PHASMOHELPER',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
           centerTitle: false,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(70),
@@ -188,6 +219,8 @@ class _CardTileState extends State<CardTile> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: Colors.black,
+      color: Colors.white.withOpacity(0.5),
       child: ListTile(
           title: Row(
             children: [
@@ -223,6 +256,7 @@ class _CardTileState extends State<CardTile> {
 
   Text noExtend() => Text(
         widget.model.infos.first.description.first['pl'] ?? "",
+        style: const TextStyle(fontWeight: FontWeight.w600),
       );
 }
 
@@ -249,7 +283,7 @@ class _InfosView extends StatelessWidget {
               children: [
                 Text(
                   "- ${e['pl'] ?? ''}",
-                  // style: const TextStyle(fontSize: 12),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 if (e != model.description.last) const Divider()
               ],

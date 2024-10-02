@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_screen.dart';
+import 'package:flutter_phasmohelper/theme.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
@@ -19,6 +20,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       routerConfig: AppNavigation.router,
+      theme: ThemeData(
+          useMaterial3: true, colorScheme: MaterialTheme.lightScheme()),
+      darkTheme: ThemeData(
+          useMaterial3: true, colorScheme: MaterialTheme.darkScheme()),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('pl', 'PL'),
