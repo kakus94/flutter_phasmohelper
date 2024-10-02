@@ -21,6 +21,7 @@ class TopDropMenu extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10, right: 10),
           scrollDirection: Axis.horizontal,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _Decoration(widget: _FastHuntNormal()),
               const SizedBox(width: 10),
@@ -28,11 +29,11 @@ class TopDropMenu extends StatelessWidget {
               const SizedBox(width: 10),
               _Decoration(widget: _HuntTime()),
               const SizedBox(width: 10),
-              _Decoration(
-                  widget: GestureDetector(
-                child: const Text("Start"),
-                onTap: () => getIt<StoperCubit>().start(),
-              )),
+              // _Decoration(
+              //     widget: GestureDetector(
+              //   child: const Text("Start"),
+              //   onTap: () => getIt<StoperCubit>().start(),
+              // )),
             ],
           ),
         );
@@ -52,7 +53,7 @@ class _Decoration extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 5, top: 5, left: 15, right: 15),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade300),
+            color: const Color.fromARGB(255, 215, 215, 215)),
         child: widget);
   }
 }

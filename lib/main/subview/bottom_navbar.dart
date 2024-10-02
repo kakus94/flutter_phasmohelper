@@ -45,7 +45,7 @@ class BottomNavbar extends StatelessWidget {
                         onTap: () => changeEv(Evidence.emf5),
                       ),
                       itemNav(
-                        "Spiritbox",
+                        "Speek",
                         'assets/spiritbox.png',
                         Evidence.spiritBox,
                         onTap: () => changeEv(Evidence.spiritBox),
@@ -57,7 +57,7 @@ class BottomNavbar extends StatelessWidget {
                         onTap: () => changeEv(Evidence.dots),
                       ),
                       itemNav(
-                        "Freezing",
+                        "Freez",
                         'assets/mrozne.png',
                         Evidence.freezing,
                         onTap: () => changeEv(Evidence.freezing),
@@ -75,7 +75,7 @@ class BottomNavbar extends StatelessWidget {
                         onTap: () => changeEv(Evidence.ghostWriting),
                       ),
                       itemNav(
-                        "ultrafiolent",
+                        "ultra",
                         'assets/ultrafiolet.png',
                         Evidence.ultrafilet,
                         onTap: () => changeEv(Evidence.ultrafilet),

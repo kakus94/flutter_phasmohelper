@@ -9,7 +9,9 @@ import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
 import 'package:flutter_phasmohelper/main/subview/top_drop_menu.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
+import 'package:flutter_phasmohelper/stoper/cubit/stoper_cubit.dart';
 import 'package:flutter_phasmohelper/stoper/cubit/stoper_screen.dart';
+import 'package:flutter_phasmohelper/stoper/cubit/stoper_state.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -38,17 +40,21 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              onPressed: () => getIt<MainCubit>(), child: const Text("Reset"))
+        ],
         title: const Text('PHASMOHELPER',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
         centerTitle: false,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(55),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Column(
               children: [
-                TopDropMenu(),
                 StoperScreen(),
+                TopDropMenu(),
               ],
             ),
           ),
@@ -169,16 +175,18 @@ class _CardTileState extends State<CardTile> {
               ...widget.model.evidence.map((e) => Image.asset(e.imagePath()))
             ],
           ),
-          subtitle: widget.extend
-              ? Column(
-                  children: [
-                    ...widget.model.infos.map((e) => _InfosView(model: e)),
-                  ],
-                )
-              : noExtend(),
+          subtitle: widget.extend ? extend() : noExtend(),
           onTap: () => setState(() {
                 widget.extend = !widget.extend;
               })),
+    );
+  }
+
+  Column extend() {
+    return Column(
+      children: [
+        ...widget.model.infos.map((e) => _InfosView(model: e)),
+      ],
     );
   }
 
@@ -208,8 +216,10 @@ class _InfosView extends StatelessWidget {
         ...model.description.map((e) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("- ${e['pl'] ?? ''}",
-                    style: const TextStyle(fontSize: 12)),
+                Text(
+                  "- ${e['pl'] ?? ''}",
+                  // style: const TextStyle(fontSize: 12),
+                ),
                 if (e != model.description.last) const Divider()
               ],
             )),
