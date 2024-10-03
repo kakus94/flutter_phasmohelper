@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
+import 'package:flutter_phasmohelper/share/app_background.dart';
+import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
 import 'package:flutter_phasmohelper/main/subview/bottom_navbar.dart';
@@ -23,13 +25,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final screenCubit = getIt<MainCubit>();
 
-  final delegate = const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
-    mainAxisSpacing: 5,
-    crossAxisSpacing: 5,
-    childAspectRatio: 0.65,
-  );
-
   @override
   void initState() {
     screenCubit.loadInitialData();
@@ -48,13 +43,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       bottomNavigationBar: BottomNavbar(),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            alignment: Alignment.center,
-            fit: BoxFit.fitHeight,
-            image: AssetImage("assets/background.png"),
-          ),
-        ),
+        decoration: AppBackground.background_2(),
         child: BlocConsumer<MainCubit, MainState>(
           bloc: screenCubit,
           listener: (BuildContext context, MainState state) {
@@ -108,15 +97,9 @@ class MyAppBar extends StatelessWidget {
       builder: (context, state) {
         return AppBar(
           elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: Colors.transparent,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.transparent,
-                Color.fromARGB(150, 0, 0, 0),
-              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
-            ),
-          ),
+          flexibleSpace: FlexibleSpaceAppBar(),
           actions: [
             ElevatedButton(
               onPressed: () {

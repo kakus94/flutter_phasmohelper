@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_phasmohelper/app_navigation.dart';
+import 'package:flutter_phasmohelper/share/app_navigation.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
-import 'package:flutter_phasmohelper/theme.dart';
+import 'package:flutter_phasmohelper/share/theme.dart';
 import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 void main() {

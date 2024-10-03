@@ -33,8 +33,8 @@ class BottomNavbar extends StatelessWidget {
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                 colors: [
-                  Colors.transparent,
-                  Color.fromARGB(150, 0, 0, 0),
+                  Color.fromARGB(75, 0, 0, 0),
+                  Color.fromARGB(255, 0, 0, 0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -119,6 +119,7 @@ class BottomNavbar extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
               ),
             ],
