@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_cubit.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_state.dart';
 import 'package:go_router/go_router.dart';
@@ -26,6 +27,7 @@ class _StartScreenState extends State<StartScreen> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
+        flexibleSpace: const FlexibleSpaceAppBar(),
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
