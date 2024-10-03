@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phasmohelper/ghosts/ghost_details_view.dart';
 import 'package:flutter_phasmohelper/share/app_background.dart';
 import 'package:flutter_phasmohelper/ghosts/ghosts_cubit.dart';
 import 'package:flutter_phasmohelper/ghosts/ghosts_state.dart';
@@ -64,11 +65,19 @@ class _GhostsScreenState extends State<GhostsScreen> {
       padding: const EdgeInsets.all(10),
       itemCount: state.ghostsList.length,
       itemBuilder: (BuildContext context, int index) {
-        return Card(
-          color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
-          child: ListTile(
-            trailing: const Icon(Icons.chevron_right),
-            title: Text(state.ghostsList[index].name),
+        return GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => GhostDetailsView(ghost: state.ghostsList[index]),
+            ),
+          ),
+          child: Card(
+            color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+            child: ListTile(
+              trailing: const Icon(Icons.chevron_right),
+              title: Text(state.ghostsList[index].name),
+            ),
           ),
         );
       },
