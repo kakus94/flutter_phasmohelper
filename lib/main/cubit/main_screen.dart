@@ -113,7 +113,7 @@ class MyAppBar extends StatelessWidget {
             decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
                 Colors.transparent,
-                Color.fromARGB(118, 155, 39, 176),
+                Color.fromARGB(150, 0, 0, 0),
               ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
             ),
           ),
@@ -218,9 +218,10 @@ class CardTile extends StatefulWidget {
 class _CardTileState extends State<CardTile> {
   @override
   Widget build(BuildContext context) {
+    final colorText = Theme.of(context).colorScheme.onSurface;
     return Card(
       shadowColor: Colors.black,
-      color: Colors.white.withOpacity(0.5),
+      color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
       child: ListTile(
           title: Row(
             children: [
@@ -233,13 +234,15 @@ class _CardTileState extends State<CardTile> {
                 Icon(widget.model.nature!.icon()),
               SizedBox(width: 10),
               Text(widget.model.speed,
-                  style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w600)),
+                  style: TextStyle(
+                      color: colorText,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600)),
               Spacer(),
               ...widget.model.evidence.map((e) => Image.asset(e.imagePath()))
             ],
           ),
-          subtitle: widget.extend ? extend() : noExtend(),
+          subtitle: widget.extend ? extend() : noExtend(context),
           onTap: () => setState(() {
                 widget.extend = !widget.extend;
               })),
@@ -254,9 +257,11 @@ class _CardTileState extends State<CardTile> {
     );
   }
 
-  Text noExtend() => Text(
+  Text noExtend(BuildContext context) => Text(
         widget.model.infos.first.description.first['pl'] ?? "",
-        style: const TextStyle(fontWeight: FontWeight.w600),
+        style: TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Theme.of(context).colorScheme.onSurface),
       );
 }
 
@@ -268,6 +273,7 @@ class _InfosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorText = Theme.of(context).colorScheme.onSurface;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -275,7 +281,7 @@ class _InfosView extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             model.title['pl'] ?? '',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, color: colorText),
           ),
         ),
         ...model.description.map((e) => Column(
@@ -283,7 +289,8 @@ class _InfosView extends StatelessWidget {
               children: [
                 Text(
                   "- ${e['pl'] ?? ''}",
-                  style: const TextStyle(fontWeight: FontWeight.w600),
+                  style:
+                      TextStyle(fontWeight: FontWeight.w400, color: colorText),
                 ),
                 if (e != model.description.last) const Divider()
               ],

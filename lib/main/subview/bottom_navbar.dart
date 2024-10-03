@@ -34,7 +34,7 @@ class BottomNavbar extends StatelessWidget {
                   gradient: LinearGradient(
                 colors: [
                   Colors.transparent,
-                  Color.fromARGB(96, 155, 39, 176),
+                  Color.fromARGB(150, 0, 0, 0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
