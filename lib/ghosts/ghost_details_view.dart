@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_phasmohelper/database/database.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 import 'package:flutter_phasmohelper/share/app_background.dart';

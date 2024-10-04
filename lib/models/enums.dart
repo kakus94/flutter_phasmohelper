@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phasmohelper/share/app_icon.dart';
 
 enum Evidence {
   emf5,
@@ -14,19 +15,19 @@ extension EvidenceExtension on Evidence {
   String imagePath() {
     switch (this) {
       case Evidence.emf5:
-        return 'assets/emf.png';
+        return AppIcon.emf.path;
       case Evidence.dots:
-        return 'assets/dots.png';
+        return AppIcon.dots.path;
       case Evidence.spiritBox:
-        return 'assets/spiritbox.png';
+        return AppIcon.spiritBox.path;
       case Evidence.ghostWriting:
-        return 'assets/pismo.png';
+        return AppIcon.ghostWriting.path;
       case Evidence.orbs:
-        return 'assets/orb.png';
+        return AppIcon.orbs.path;
       case Evidence.freezing:
-        return 'assets/mrozne.png';
+        return AppIcon.freezing.path;
       case Evidence.ultrafilet:
-        return 'assets/ultrafiolet.png';
+        return AppIcon.ultrafilet.path;
     }
   }
 }

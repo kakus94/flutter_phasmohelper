@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phasmohelper/config/di.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
+import 'package:flutter_phasmohelper/share/app_icon.dart';
 
 import '../../models/enums.dart';
 
@@ -49,43 +50,43 @@ class BottomNavbar extends StatelessWidget {
                     children: [
                       itemNav(
                         "EMF5",
-                        'assets/emf.png',
+                        AppIcon.emf.path,
                         Evidence.emf5,
                         onTap: () => changeEv(Evidence.emf5),
                       ),
                       itemNav(
                         "Speek",
-                        'assets/spiritbox.png',
+                        AppIcon.spiritBox.path,
                         Evidence.spiritBox,
                         onTap: () => changeEv(Evidence.spiritBox),
                       ),
                       itemNav(
                         "D.O.T.S",
-                        'assets/dots.png',
+                        AppIcon.dots.path,
                         Evidence.dots,
                         onTap: () => changeEv(Evidence.dots),
                       ),
                       itemNav(
                         "Freez",
-                        'assets/mrozne.png',
+                        AppIcon.freezing.path,
                         Evidence.freezing,
                         onTap: () => changeEv(Evidence.freezing),
                       ),
                       itemNav(
                         "ORB",
-                        'assets/orb.png',
+                        AppIcon.orbs.path,
                         Evidence.orbs,
                         onTap: () => changeEv(Evidence.orbs),
                       ),
                       itemNav(
                         "Writing",
-                        'assets/pismo.png',
+                        AppIcon.ghostWriting.path,
                         Evidence.ghostWriting,
                         onTap: () => changeEv(Evidence.ghostWriting),
                       ),
                       itemNav(
                         "ultra",
-                        'assets/ultrafiolet.png',
+                        AppIcon.ultrafilet.path,
                         Evidence.ultrafilet,
                         onTap: () => changeEv(Evidence.ultrafilet),
                       ),

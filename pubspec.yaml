@@ -36,13 +36,13 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/dots.png
-    - assets/mrozne.png
-    - assets/orb.png
-    - assets/pismo.png
-    - assets/spiritbox.png
-    - assets/ultrafiolet.png
-    - assets/emf.png
-    - assets/background.jpg
-    - assets/background.png
-    - assets/background_start.jpg
+    - assets/evidence/dots.png
+    - assets/evidence/mrozne.png
+    - assets/evidence/orb.png
+    - assets/evidence/pismo.png
+    - assets/evidence/spiritbox.png
+    - assets/evidence/ultrafiolet.png
+    - assets/evidence/emf.png
+    - assets/background/background.jpg
+    - assets/background/background.png
+    - assets/background/background_start.jpg

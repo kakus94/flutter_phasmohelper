@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phasmohelper/share/app_icon.dart';
 import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_cubit.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_state.dart';
@@ -51,11 +52,11 @@ class _StartScreenState extends State<StartScreen> {
           }
 
           return Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 alignment: Alignment.center,
                 fit: BoxFit.fitHeight,
-                image: AssetImage("assets/background_start.jpg"),
+                image: AppIcon.background3.image,
               ),
             ),
             child: buildBody(state),
@@ -97,7 +98,7 @@ class _CardStart extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.goNamed(namePush),
       child: Card(
-        color: Theme.of(context).colorScheme.surface.withOpacity(0.4),
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: Container(
           alignment: Alignment.center,
           child: Text(
