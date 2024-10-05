@@ -123,6 +123,19 @@ enum DifficultyLevel {
 
 enum CanRecognizedHunting { yes, no, maybe }
 
+extension CanRecognizedHuntingExtension on CanRecognizedHunting {
+  String name() {
+    switch (this) {
+      case CanRecognizedHunting.yes:
+        return 'Yes';
+      case CanRecognizedHunting.no:
+        return 'No';
+      case CanRecognizedHunting.maybe:
+        return 'Maybe';
+    }
+  }
+}
+
 enum DifficultyWithoutEvidence { easy, medium, hard, posibleMultiolayer }
 
 enum BehaviorHunt { slowsDown, normal, speedsUp, none }

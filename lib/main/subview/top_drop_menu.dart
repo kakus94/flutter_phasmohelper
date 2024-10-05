@@ -177,7 +177,7 @@ class _HuntTime extends StatelessWidget {
           ),
           const PopupMenuItem(
             value: HuntSanity.veryEarlyP75,
-            child: Text("Bardzej wczesnie >75"),
+            child: Text("Bardzo wczesnie >75"),
           ),
           const PopupMenuItem(
             value: HuntSanity.earlyP50,

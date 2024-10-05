@@ -119,14 +119,14 @@ class MyAppBar extends StatelessWidget {
             ),
             SizedBox(width: 10)
           ],
-          title: const Text(
-            'PHASMOHELPER',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-            ),
-          ),
+          // title: const Text(
+          //   'PHASMOHELPER',
+          //   style: TextStyle(
+          //     fontSize: 20,
+          //     fontWeight: FontWeight.w700,
+          //     color: Colors.white,
+          //   ),
+          // ),
           centerTitle: false,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(70),
@@ -213,8 +213,14 @@ class _CardTileState extends State<CardTile> {
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              if (widget.model.nature != null)
-                Icon(widget.model.nature!.icon()),
+              // if (widget.model.nature != null)
+              //   Icon(widget.model.nature!.icon()),
+              SizedBox(width: 10),
+              Text("${widget.model.huntSanityPrecent}%",
+                  style: TextStyle(
+                      color: colorText,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600)),
               SizedBox(width: 10),
               Text(widget.model.speed,
                   style: TextStyle(

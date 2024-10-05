@@ -33,9 +33,14 @@ class GhostDetailsView extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(8.0),
             children: [
-              _EvidendeCard(evidences: ghost.evidence),
+              _EvidendeCard(ghost: ghost),
               if (ghost.evidenceRequired != null)
-                _EvidenceRequiredCard(evidence: ghost.evidenceRequired!),
+                _EvidenceRequiredCard(ghost: ghost),
+              _SanityHuntCard(ghost: ghost),
+              _NormalSpeedCard(ghost: ghost),
+              _CanRecognizeCard(ghost: ghost),
+              _DificulltyWithNoEvidenceCard(ghost: ghost),
+              _InfoCard(ghost: ghost),
             ],
           ),
         ),
@@ -45,32 +50,26 @@ class GhostDetailsView extends StatelessWidget {
 }
 
 class _EvidendeCard extends StatelessWidget {
-  const _EvidendeCard({required this.evidences});
+  const _EvidendeCard({required this.ghost});
 
-  final List<Evidence> evidences;
+  final GhostModel ghost;
 
   @override
   Widget build(BuildContext context) {
+    final evidences = ghost.evidence;
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
-        child: Padding(
-          padding: const EdgeInsets.all(0),
-          child: ListTile(
-            title: const Text(
-              "Evidences",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+        child: ListTile(
+          title: const Text(
+            "Evidences",
+          ),
+          subtitle: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ...evidences.map(
+                (ev) => _row(ev),
               ),
-            ),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ...evidences.map(
-                  (ev) => _row(ev),
-                ),
-              ],
-            ),
+            ],
           ),
         ));
   }
@@ -86,9 +85,94 @@ class _EvidendeCard extends StatelessWidget {
 }
 
 class _EvidenceRequiredCard extends StatelessWidget {
-  const _EvidenceRequiredCard({required this.evidence});
+  const _EvidenceRequiredCard({required this.ghost});
 
-  final Evidence evidence;
+  final GhostModel ghost;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+        child: ListTile(
+            title: const Text("Evidence required:"),
+            subtitle: Row(
+              children: [
+                Image.asset(ghost.evidenceRequired!.imagePath()),
+                Text(ghost.evidenceRequired!.name,
+                    style: const TextStyle(fontWeight: FontWeight.w600)),
+              ],
+            )));
+  }
+}
+
+class _SanityHuntCard extends StatelessWidget {
+  const _SanityHuntCard({required this.ghost});
+
+  final GhostModel ghost;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+        child: ListTile(
+          title: const Text("Sanity hunt:"),
+          subtitle: Text(ghost.huntSanityPrecent.toString()),
+        ));
+  }
+}
+
+class _NormalSpeedCard extends StatelessWidget {
+  const _NormalSpeedCard({required this.ghost});
+
+  final GhostModel ghost;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+        child: ListTile(
+          subtitle: Text(ghost.speed),
+          title: const Text("Normal speed:"),
+        ));
+  }
+}
+
+class _CanRecognizeCard extends StatelessWidget {
+  const _CanRecognizeCard({required this.ghost});
+
+  final GhostModel ghost;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+        child: ListTile(
+          subtitle: Text(ghost.canRecognizedHunting.name()),
+          title: const Text("Can recognize with hunt:"),
+        ));
+  }
+}
+
+class _DificulltyWithNoEvidenceCard extends StatelessWidget {
+  const _DificulltyWithNoEvidenceCard({required this.ghost});
+
+  final GhostModel ghost;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+        child: ListTile(
+          subtitle: Text(ghost.difficultyWithoutEvidence.name),
+          title: const Text("Dificullty with no evidence:"),
+        ));
+  }
+}
+
+class _InfoCard extends StatelessWidget {
+  const _InfoCard({required this.ghost});
+
+  final GhostModel ghost;
 
   @override
   Widget build(BuildContext context) {
@@ -96,16 +180,22 @@ class _EvidenceRequiredCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Row(
+          child: Column(
             children: [
-              const Text("Wymagane dowody:",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-              Spacer(),
-              Image.asset(evidence.imagePath()),
-              Text(evidence.name,
-                  style: const TextStyle(fontWeight: FontWeight.w600)),
+              ...ghost.infos.map((e) => _row(e)),
             ],
           ),
         ));
+  }
+
+  _row(InfoModel e) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text((e.title['pl'] ?? '').toUpperCase(),
+            style: const TextStyle(fontWeight: FontWeight.bold)),
+        ...e.description.map((e) => Text("- ${e['pl'] ?? ''}")),
+      ],
+    );
   }
 }
