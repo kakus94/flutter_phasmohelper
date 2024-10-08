@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
 
 class GhostModel {
@@ -16,6 +17,8 @@ class GhostModel {
     required this.infos,
     required this.nature,
     required this.speed,
+    this.isCrossedOut = false,
+    this.isPropably = false,
   });
 
   String name;
@@ -30,6 +33,18 @@ class GhostModel {
   List<InfoModel> infos;
   Nature? nature;
   String speed;
+
+  bool isCrossedOut;
+  bool isPropably;
+
+  Color? getColor() {
+    if (isCrossedOut) {
+      return Colors.red.withOpacity(0.7);
+    } else if (isPropably) {
+      return Colors.green.withOpacity(0.7);
+    }
+    return null;
+  }
 }
 
 class InfoModel {

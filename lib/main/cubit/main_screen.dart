@@ -71,8 +71,58 @@ class _MainScreenState extends State<MainScreen> {
       // shrinkWrap: true,
       itemCount: state.ghostList?.length ?? 0,
       itemBuilder: (BuildContext context, int index) {
-        return CardTile(model: state.ghostList![index]);
+        return Dismissible(
+          key: UniqueKey(),
+          background: _background(),
+          secondaryBackground: _secondaryBackground(),
+          confirmDismiss: (direction) => _confirmDismiss(direction, index),
+          onDismissed: (direction) => _onDismissed(direction, index),
+          child: CardTile(model: state.ghostList![index]),
+        );
       },
+    );
+  }
+
+  Padding _background() {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 45, 164, 2),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Icon(Icons.favorite),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _secondaryBackground() {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        // color: Colors.red,
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Icon(Icons.delete),
+          ),
+        ),
+      ),
     );
   }
 
@@ -83,6 +133,21 @@ class _MainScreenState extends State<MainScreen> {
         Text(title, style: const TextStyle(fontSize: 12)),
       ],
     );
+  }
+
+  Future<bool?> _confirmDismiss(DismissDirection direction, int index) async {
+    if (direction == DismissDirection.endToStart) {
+      await getIt<MainCubit>().crossOut(index);
+      return false;
+    } else if (direction == DismissDirection.startToEnd) {
+      await getIt<MainCubit>().propably(index);
+      return false;
+    }
+    return null;
+  }
+
+  _onDismissed(DismissDirection direction, int index) {
+    print("3");
   }
 }
 
@@ -195,9 +260,11 @@ class _CardTileState extends State<CardTile> {
   @override
   Widget build(BuildContext context) {
     final colorText = Theme.of(context).colorScheme.onSurface;
+    final colorCard = widget.model.getColor() ??
+        Theme.of(context).colorScheme.surface.withOpacity(0.7);
     return Card(
       shadowColor: Colors.black,
-      color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
+      color: colorCard,
       child: ListTile(
           title: Row(
             children: [

@@ -55,4 +55,20 @@ class MainCubit extends Cubit<MainState> {
     gameController.clearFindedEvidences();
     loadInitialData();
   }
+
+  removeGhost(int index) {}
+
+  Future<void> crossOut(int index) async {
+    final ghostList = state.ghostList;
+    ghostList![index].isCrossedOut = !ghostList[index].isCrossedOut;
+    ghostList[index].isPropably = false;
+    emit(state.copyWith(ghostList: ghostList));
+  }
+
+  Future<void> propably(int index) async {
+    final ghostList = state.ghostList;
+    ghostList![index].isPropably = !ghostList[index].isPropably;
+    ghostList[index].isCrossedOut = false;
+    emit(state.copyWith(ghostList: ghostList));
+  }
 }
