@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phasmohelper/items/items_state.dart';
+import 'package:flutter_phasmohelper/curserd_items/curserd_items_state.dart';
 import 'package:flutter_phasmohelper/models/items_model.dart';
 
-class ItemsCubit extends Cubit<ItemsState> {
-  ItemsCubit() : super(ItemsState(isLoading: true, error: null, itemsList: []));
+class CurserdItemsCubit extends Cubit<CurserdItemsState> {
+  CurserdItemsCubit()
+      : super(CurserdItemsState(isLoading: true, error: null, itemsList: []));
 
   Future<void> loadInitialData() async {
     final stableState = state;

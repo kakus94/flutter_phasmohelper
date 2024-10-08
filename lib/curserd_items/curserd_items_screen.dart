@@ -1,20 +1,22 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phasmohelper/items/item_detail_screen.dart';
-import 'package:flutter_phasmohelper/items/items_cubit.dart';
-import 'package:flutter_phasmohelper/items/items_state.dart';
+import 'package:flutter_phasmohelper/curserd_items/curserd_items_detail_screen.dart';
+import 'package:flutter_phasmohelper/curserd_items/curserd_items_cubit.dart';
+import 'package:flutter_phasmohelper/curserd_items/curserd_items_state.dart';
 import 'package:flutter_phasmohelper/share/app_background.dart';
 import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 
-class ItemsScreen extends StatefulWidget {
-  const ItemsScreen({Key? key}) : super(key: key);
+class CurserdItemsScreen extends StatefulWidget {
+  const CurserdItemsScreen({super.key});
 
   @override
-  _ItemsScreenState createState() => _ItemsScreenState();
+  _CurserdItemsScreenState createState() => _CurserdItemsScreenState();
 }
 
-class _ItemsScreenState extends State<ItemsScreen> {
-  final screenCubit = ItemsCubit();
+class _CurserdItemsScreenState extends State<CurserdItemsScreen> {
+  final screenCubit = CurserdItemsCubit();
 
   @override
   void initState() {
@@ -36,12 +38,12 @@ class _ItemsScreenState extends State<ItemsScreen> {
       ),
       body: Container(
         decoration: AppBackground.background_1(),
-        child: BlocConsumer<ItemsCubit, ItemsState>(
+        child: BlocConsumer<CurserdItemsCubit, CurserdItemsState>(
           bloc: screenCubit,
-          listener: (BuildContext context, ItemsState state) {
+          listener: (BuildContext context, CurserdItemsState state) {
             if (state.error != null) {}
           },
-          builder: (BuildContext context, ItemsState state) {
+          builder: (BuildContext context, CurserdItemsState state) {
             if (state.isLoading) {
               return const Center(child: CircularProgressIndicator());
             }
@@ -56,7 +58,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
     );
   }
 
-  Widget buildBody(ItemsState state) {
+  Widget buildBody(CurserdItemsState state) {
     return ListView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: state.itemsList.length,
@@ -73,8 +75,8 @@ class _ItemsScreenState extends State<ItemsScreen> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) =>
-                        ItemDetailScreen(model: state.itemsList[index])));
+                    builder: (_) => CurserdItemsDetailScreen(
+                        model: state.itemsList[index])));
           },
         );
       },

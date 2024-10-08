@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/ghosts/ghosts_screen.dart';
-import 'package:flutter_phasmohelper/items/items_screen.dart';
+import 'package:flutter_phasmohelper/curserd_items/curserd_items_screen.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_screen.dart';
 import 'package:flutter_phasmohelper/settings/settings_screen.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_screen.dart';
@@ -39,7 +39,7 @@ class AppNavigation {
           ),
           GoRoute(
             path: "curserdPosssession",
-            builder: (context, state) => const ItemsScreen(),
+            builder: (context, state) => const CurserdItemsScreen(),
             name: "curserdPosssession",
           ),
         ],

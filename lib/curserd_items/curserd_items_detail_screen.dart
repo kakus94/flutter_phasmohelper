@@ -3,8 +3,8 @@ import 'package:flutter_phasmohelper/models/items_model.dart';
 import 'package:flutter_phasmohelper/share/app_background.dart';
 import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 
-class ItemDetailScreen extends StatelessWidget {
-  const ItemDetailScreen({super.key, required this.model});
+class CurserdItemsDetailScreen extends StatelessWidget {
+  const CurserdItemsDetailScreen({super.key, required this.model});
 
   final ItemsModel model;
 
