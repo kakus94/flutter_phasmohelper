@@ -33,6 +33,7 @@ class _StartScreenState extends State<StartScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
         title: const Text(
           "Phasmohelper",
           style: TextStyle(
@@ -83,7 +84,7 @@ class _StartScreenState extends State<StartScreen> {
         children: [
           _CardStart(text: langStart, namePush: 'main'),
           _CardStart(text: langGhost, namePush: 'ghosts'),
-          _CardStart(text: langItem, namePush: 'curserdPosssession'),
+          _CardStart(text: langItem, namePush: 'items'),
           _CardStart(text: langCurserd, namePush: 'curserdPosssession'),
           _CardStart(text: langSetting, namePush: 'settings'),
         ],
