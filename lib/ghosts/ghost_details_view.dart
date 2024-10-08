@@ -3,6 +3,7 @@ import 'package:flutter_phasmohelper/models/enums.dart';
 import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 import 'package:flutter_phasmohelper/share/app_background.dart';
 import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 class GhostDetailsView extends StatelessWidget {
   const GhostDetailsView({
@@ -60,8 +61,8 @@ class _EvidendeCard extends StatelessWidget {
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
-          title: const Text(
-            "Evidences",
+          title: Text(
+            AppLocalizations.of(context)?.evidence ?? "lang error",
           ),
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,7 +95,8 @@ class _EvidenceRequiredCard extends StatelessWidget {
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
-            title: const Text("Evidence required:"),
+            title: Text(
+                AppLocalizations.of(context)?.evidenceRequired ?? "lang error"),
             subtitle: Row(
               children: [
                 Image.asset(ghost.evidenceRequired!.imagePath()),
@@ -115,8 +117,8 @@ class _SanityHuntCard extends StatelessWidget {
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
-          title: const Text("Sanity hunt:"),
-          subtitle: Text(ghost.huntSanityPrecent.toString()),
+          title: Text(AppLocalizations.of(context)?.huntSanity ?? "lang error"),
+          subtitle: Text('${ghost.huntSanityPrecent}%'),
         ));
   }
 }
@@ -132,7 +134,8 @@ class _NormalSpeedCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
           subtitle: Text(ghost.speed),
-          title: const Text("Normal speed:"),
+          title: Text(
+              AppLocalizations.of(context)?.speedNormalNull ?? "lang error"),
         ));
   }
 }
@@ -147,8 +150,9 @@ class _CanRecognizeCard extends StatelessWidget {
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
-          subtitle: Text(ghost.canRecognizedHunting.name()),
-          title: const Text("Can recognize with hunt:"),
+          subtitle: Text(ghost.canRecognizedHunting.name(context)),
+          title: Text(AppLocalizations.of(context)?.canRecognizeWithHunt ??
+              "lang error"),
         ));
   }
 }
@@ -163,8 +167,9 @@ class _DificulltyWithNoEvidenceCard extends StatelessWidget {
     return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
         child: ListTile(
-          subtitle: Text(ghost.difficultyWithoutEvidence.name),
-          title: const Text("Dificullty with no evidence:"),
+          subtitle: Text(ghost.difficultyWithoutEvidence.name(context)),
+          title: Text(AppLocalizations.of(context)?.dificulltyWithNoEvidence ??
+              "lang error"),
         ));
   }
 }

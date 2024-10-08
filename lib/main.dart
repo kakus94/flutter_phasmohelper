@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true, colorScheme: MaterialTheme.darkScheme()),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('pl', 'PL'),
+      // locale: const Locale('pl', 'PL'),
+      locale: const Locale('en', 'US'),
     );
   }
 }

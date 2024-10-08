@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phasmohelper/share/app_icon.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 enum Evidence {
   emf5,
@@ -124,19 +125,34 @@ enum DifficultyLevel {
 enum CanRecognizedHunting { yes, no, maybe }
 
 extension CanRecognizedHuntingExtension on CanRecognizedHunting {
-  String name() {
+  String name(BuildContext context) {
     switch (this) {
       case CanRecognizedHunting.yes:
-        return 'Yes';
+        return AppLocalizations.of(context)?.yes ?? "lang error";
       case CanRecognizedHunting.no:
-        return 'No';
+        return AppLocalizations.of(context)?.no ?? "lang error";
       case CanRecognizedHunting.maybe:
-        return 'Maybe';
+        return AppLocalizations.of(context)?.maybe ?? "lang error";
     }
   }
 }
 
 enum DifficultyWithoutEvidence { easy, medium, hard, posibleMultiolayer }
+
+extension DifficultyWithoutEvidenceExtension on DifficultyWithoutEvidence {
+  String name(BuildContext context) {
+    switch (this) {
+      case DifficultyWithoutEvidence.easy:
+        return AppLocalizations.of(context)?.easy ?? "lang error";
+      case DifficultyWithoutEvidence.medium:
+        return AppLocalizations.of(context)?.medium ?? "lang error";
+      case DifficultyWithoutEvidence.hard:
+        return AppLocalizations.of(context)?.hard ?? "lang error";
+      case DifficultyWithoutEvidence.posibleMultiolayer:
+        return AppLocalizations.of(context)?.posibleMultiolayer ?? "lang error";
+    }
+  }
+}
 
 enum BehaviorHunt { slowsDown, normal, speedsUp, none }
 

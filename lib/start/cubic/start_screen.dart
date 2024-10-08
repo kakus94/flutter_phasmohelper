@@ -5,6 +5,7 @@ import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_cubit.dart';
 import 'package:flutter_phasmohelper/start/cubic/start_state.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -67,17 +68,24 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Widget buildBody(StartState state) {
+    final langStart = AppLocalizations.of(context)!.startGame;
+    final langGhost = AppLocalizations.of(context)!.ghosts;
+    final langItem = AppLocalizations.of(context)!.items;
+    final langCurserd = AppLocalizations.of(context)!.curserdPosssession;
+    final langSetting = AppLocalizations.of(context)!.settings;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView.count(
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        children: const [
-          _CardStart(text: "Start", namePush: 'main'),
-          _CardStart(text: "Duchy", namePush: 'ghosts'),
-          _CardStart(text: "Przedmioty", namePush: 'items'),
-          _CardStart(text: "Ustawienia", namePush: 'settings'),
+        children: [
+          _CardStart(text: langStart, namePush: 'main'),
+          _CardStart(text: langGhost, namePush: 'ghosts'),
+          _CardStart(text: langItem, namePush: 'curserdPosssession'),
+          _CardStart(text: langCurserd, namePush: 'curserdPosssession'),
+          _CardStart(text: langSetting, namePush: 'settings'),
         ],
       ),
     );
@@ -103,6 +111,7 @@ class _CardStart extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             text,
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Theme.of(context).colorScheme.onSurface,
               fontWeight: FontWeight.bold,

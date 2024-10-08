@@ -7,6 +7,7 @@ import 'package:flutter_phasmohelper/controller/game_controller.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_cubit.dart';
 import 'package:flutter_phasmohelper/main/cubit/main_state.dart';
 import 'package:flutter_phasmohelper/models/enums.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 class TopDropMenu extends StatelessWidget {
   TopDropMenu({super.key});
@@ -56,6 +57,7 @@ class _FastHuntNormal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lang = AppLocalizations.of(context)?.localeName ?? 'pl';
     return PopupMenuButton<Speed?>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -70,32 +72,35 @@ class _FastHuntNormal extends StatelessWidget {
       },
       itemBuilder: (context) {
         return [
-          const PopupMenuItem(
+          PopupMenuItem(
             value: Speed.none,
-            child: Text("brak"),
+            child: Text(AppLocalizations.of(context)?.none ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: Speed.slow,
-            child: Text("slow"),
+            child: Text(AppLocalizations.of(context)?.slow ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: Speed.medium,
-            child: Text("normal"),
+            child: Text(AppLocalizations.of(context)?.normal ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: Speed.fast,
-            child: Text("fast"),
+            child: Text(AppLocalizations.of(context)?.fast ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: Speed.superFast,
-            child: Text("very fast"),
+            child:
+                Text(AppLocalizations.of(context)?.superFast ?? "lang error"),
           ),
         ];
       },
       child: Row(
         children: [
           const Icon(Icons.speed),
-          Text(getIt<GameController>().norlmalSpeed?.name('pl') ?? "brak"),
+          Text(getIt<GameController>().norlmalSpeed?.name(lang) ??
+              AppLocalizations.of(context)?.speedNormalNull ??
+              "lang error"),
         ],
       ),
     );
@@ -122,21 +127,21 @@ class _BehaviorHunt extends StatelessWidget {
       },
       itemBuilder: (context) {
         return [
-          const PopupMenuItem(
+          PopupMenuItem(
             value: BehaviorHunt.none,
-            child: Text("Brak"),
+            child: Text(AppLocalizations.of(context)?.none ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: BehaviorHunt.slowsDown,
-            child: Text("Zwalnia"),
+            child: Text(AppLocalizations.of(context)?.slowDown ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: BehaviorHunt.normal,
-            child: Text("bez zmian"),
+            child: Text(AppLocalizations.of(context)?.noChange ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: BehaviorHunt.speedsUp,
-            child: Text("Przyspiesza"),
+            child: Text(AppLocalizations.of(context)?.speedUp ?? "lang error"),
           ),
         ];
       },
@@ -144,7 +149,9 @@ class _BehaviorHunt extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.thermostat),
-          Text(getIt<GameController>().behaviorHunt?.name('pl') ?? "Brak"),
+          Text(getIt<GameController>().behaviorHunt?.name('pl') ??
+              AppLocalizations.of(context)?.behaviorHunt ??
+              "lang error"),
         ],
       ),
     );
@@ -171,25 +178,27 @@ class _HuntTime extends StatelessWidget {
       },
       itemBuilder: (context) {
         return [
-          const PopupMenuItem(
+          PopupMenuItem(
             value: HuntSanity.none,
-            child: Text("Brak"),
+            child: Text(AppLocalizations.of(context)?.none ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: HuntSanity.veryEarlyP75,
-            child: Text("Bardzo wczesnie >75"),
+            child: Text(
+                AppLocalizations.of(context)?.veryErlyHunt ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: HuntSanity.earlyP50,
-            child: Text("Wczesnie >50"),
+            child: Text(AppLocalizations.of(context)?.erlyHunt ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: HuntSanity.normalP50,
-            child: Text("Normalnie <50"),
+            child:
+                Text(AppLocalizations.of(context)?.normalHunt ?? "lang error"),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: HuntSanity.lateM40,
-            child: Text("Późno <40"),
+            child: Text(AppLocalizations.of(context)?.lateHunt ?? "lang error"),
           ),
         ];
       },
@@ -197,7 +206,9 @@ class _HuntTime extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.timer),
-          Text(getIt<GameController>().huntSanity?.name('pl') ?? "Brak"),
+          Text(getIt<GameController>().huntSanity?.name('pl') ??
+              AppLocalizations.of(context)?.huntSanity ??
+              "lang error"),
         ],
       ),
     );

@@ -14,6 +14,7 @@ import 'package:flutter_phasmohelper/models/ghost/ghost_model.dart';
 import 'package:flutter_phasmohelper/stoper/cubit/stoper_cubit.dart';
 import 'package:flutter_phasmohelper/stoper/cubit/stoper_screen.dart';
 import 'package:flutter_phasmohelper/stoper/cubit/stoper_state.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -106,7 +107,7 @@ class MyAppBar extends StatelessWidget {
                 getIt<MainCubit>().reset();
                 getIt<StoperCubit>().reset();
               },
-              child: const Text("Reset"),
+              child: Text(AppLocalizations.of(context)?.reset ?? "lang error"),
             ),
             SizedBox(width: 10),
             ElevatedButton(
@@ -114,19 +115,11 @@ class MyAppBar extends StatelessWidget {
                   ? getIt<StoperCubit>().stop()
                   : getIt<StoperCubit>().start(),
               child: state.status == StoperStatus.start
-                  ? const Text("Stop")
-                  : const Text("Start"),
+                  ? Text(AppLocalizations.of(context)?.stop ?? "lang error")
+                  : Text(AppLocalizations.of(context)?.start ?? "lang error"),
             ),
             SizedBox(width: 10)
           ],
-          // title: const Text(
-          //   'PHASMOHELPER',
-          //   style: TextStyle(
-          //     fontSize: 20,
-          //     fontWeight: FontWeight.w700,
-          //     color: Colors.white,
-          //   ),
-          // ),
           centerTitle: false,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(70),

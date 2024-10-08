@@ -5,6 +5,7 @@ import 'package:flutter_phasmohelper/share/app_background.dart';
 import 'package:flutter_phasmohelper/ghosts/ghosts_cubit.dart';
 import 'package:flutter_phasmohelper/ghosts/ghosts_state.dart';
 import 'package:flutter_phasmohelper/share/flexible_space_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/arb_localization.dart';
 
 class GhostsScreen extends StatefulWidget {
   const GhostsScreen({Key? key}) : super(key: key);
@@ -34,7 +35,10 @@ class _GhostsScreenState extends State<GhostsScreen> {
           iconTheme: const IconThemeData(color: Colors.white),
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: const Text('Ghosts', style: TextStyle(color: Colors.white)),
+          title: Text(
+            AppLocalizations.of(context)?.ghosts ?? "lang error",
+            style: const TextStyle(color: Colors.white),
+          ),
         ),
       ),
       body: Container(

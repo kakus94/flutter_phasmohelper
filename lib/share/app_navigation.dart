@@ -38,9 +38,9 @@ class AppNavigation {
             name: "settings",
           ),
           GoRoute(
-            path: "items",
+            path: "curserdPosssession",
             builder: (context, state) => const ItemsScreen(),
-            name: "items",
+            name: "curserdPosssession",
           ),
         ],
       ),
